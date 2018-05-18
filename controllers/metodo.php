@@ -7,11 +7,22 @@ class Metodo extends Controller {
     }
     
     public function index(){
-        var_dump($this->helper->getUrl());
+        $this->view->idioma = $this->idioma;
+        $this->view->title = SITE_TITLE . 'Metodo';
+        $this->view->description = '';
+        $this->view->keywords = '';
+        $this->view->render('header');
+        $this->view->render('metodo/index');
+        $this->view->render('footer');
     }
     
     public function hola(){
-        var_dump($this->helper->getUrl());
-        echo $this->model->saludo();
+        $this->view->idioma = $this->idioma;
+        $this->view->title = SITE_TITLE . 'Hola';
+        $this->view->description = '';
+        $this->view->keywords = '';
+        $this->view->render('header');
+        $this->view->render('metodo/hola');
+        $this->view->render('footer');
     }
 }

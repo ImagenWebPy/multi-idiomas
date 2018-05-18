@@ -1,14 +1,15 @@
-<!DOCTYPE HTML>
-<html>
+<!doctype html>
+<html lang="<?= $this->idioma; ?>">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Multi-Idiomas</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="description" content="<?= $this->description; ?>">
+        <meta name="keywords" content="<?= $this->keywords; ?>">
+        <meta name="author" content="John Doe">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="<?= URL; ?>public/css/bootstrap.min.css" crossorigin="anonymous">
+
+        <title><?= $this->title; ?></title>
     </head>
     <body>
-        <header>
-            <nav>
-                <ul>
-                    <li>Your menu</li>
-                </ul>
-            </nav>
-        </header>

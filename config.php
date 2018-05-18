@@ -26,7 +26,7 @@ define('DB_TYPE', 'mysql');
 define('HASH_PASSWORD_KEY', '!@123456789ABCDEFGHIJKLMNOPRSTWYZ[¿]{?}<->');
 
 //Constantes varias
-define('SITE_TITLE', 'Multi Idiomas');
+define('SITE_TITLE', 'Multi Idiomas :: ');
 define('CANT_REG', 12);
 
 function getHost() {

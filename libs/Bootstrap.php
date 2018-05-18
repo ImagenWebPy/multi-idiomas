@@ -109,8 +109,6 @@ class Bootstrap {
      */
     private function _callControllerMethod() {
         $length = count($this->_url);
-        var_dump($this->_url);
-        var_dump($length);
         // Make sure the method we are calling exists
         if ($length > 2) {
             if (!method_exists($this->_controller, $this->_url[2])) {

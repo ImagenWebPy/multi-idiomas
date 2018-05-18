@@ -1,0 +1,57 @@
+#Listado de Directorios
+Options -Indexes
+
+# protect config.php
+<files config.php>
+order allow,deny
+deny from all
+</files>
+
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+
+#Inyecciones SQL
+RewriteCond %{QUERY_STRING} (;|<|>|’|”|\)|%0A|%0D|%22|%27|%3C|%3E|%00).*(/\*|union|select|insert|cast|set|declare|drop|update|md5|benchmark) [NC,OR]
+RewriteCond %{QUERY_STRING} \.\./\.\. [OR]
+RewriteCond %{QUERY_STRING} (localhost|loopback|127\.0\.0\.1) [NC,OR]
+RewriteCond %{QUERY_STRING} \.[a-z0-9] [NC,OR]
+RewriteCond %{QUERY_STRING} (<|>|’|%0A|%0D|%27|%3C|%3E|%00) [NC]
+RewriteRule .* - [F]
+
+#Bloqueo de agentes y utilidades de línea de comandos
+RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
+RewriteCond %{HTTP_USER_AGENT} ^(java|curl|wget) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} (winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} (libwww-perl|curl|wget|python|nikto|scan) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} (<|>|’|%0A|%0D|%27|%3C|%3E|%00) [NC]
+RewriteRule .* - [F]
+
+#Inclusión de archivos remotos (RFI) y compañía
+RewriteCond %{REQUEST_METHOD} GET
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=/([a-z0-9_.]//?)+ [NC]
+RewriteRule .* - [F]
+
+#MVC RULES
+RewriteBase /multi-idiomas/
+#RewriteBase /
+
+#forzamos redireccion https
+#RewriteCond %{SERVER_PORT} !^443$ 
+#RewriteCond %{HTTPS}  off 
+#RewriteRule ^(.*)$ https://www.cadiemfondos.com.py/$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+</IfModule>
+#CORS
+#Solo descomentar en produccion
+#<FilesMatch ".(eot|ttf|otf|woff|woff2)">
+#  Header set Access-Control-Allow-Origin "*"
+#</FilesMatch>

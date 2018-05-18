@@ -3,11 +3,13 @@
 class Controller {
 
     public $helper = '';
+    public $idioma = '';
 
     function __construct() {
         //echo 'Main controller<br />';
         $this->view = new View();
         $this->helper = new Helper;
+        $this->idioma = $this->helper->getUrl()[0];
     }
 
     /**
