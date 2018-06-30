@@ -4,7 +4,6 @@ class Index extends Controller {
 
     function __construct() {
         parent::__construct();
-        echo $this->idioma;
     }
 
     public function index() {
