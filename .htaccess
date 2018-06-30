@@ -38,6 +38,7 @@ RewriteRule .* - [F]
 RewriteBase /multi-idiomas/
 #RewriteBase /
 
+
 #forzamos redireccion https
 #RewriteCond %{SERVER_PORT} !^443$ 
 #RewriteCond %{HTTPS}  off 
@@ -47,7 +48,9 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-l
 
+RewriteRule ^$ /en/ [L]
 RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
 
 </IfModule>
 #CORS

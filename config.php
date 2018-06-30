@@ -12,7 +12,7 @@ switch ($host) {
     case 'localhost':
         define('URL', 'http://localhost/multi-idiomas/');
         define('DB_USER', 'root');
-        define('DB_PASS', 'cThoNTJ0cy9tVU5lQ3JnTDgrbXZxdz09');
+        define('DB_PASS', '');
         define('DB_NAME', 'multi-idiomas');
         define('DB_HOST', 'localhost');
         break;

@@ -9,7 +9,13 @@ class Controller {
         //echo 'Main controller<br />';
         $this->view = new View();
         $this->helper = new Helper;
-        $this->idioma = $this->helper->getUrl()[0];
+        $lng = 'en';
+        if (!empty($this->helper->getUrl()[0])) {
+            if ($this->helper->getUrl()[0] != 'index.php') {
+                $lng = $this->helper->getUrl()[0];
+            }
+        }
+        $this->idioma = $lng;
     }
 
     /**

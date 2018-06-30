@@ -4,6 +4,7 @@ class Index extends Controller {
 
     function __construct() {
         parent::__construct();
+        echo $this->idioma;
     }
 
     public function index() {
@@ -14,6 +15,7 @@ class Index extends Controller {
         $this->view->render('header');
         $this->view->render('index/index');
         $this->view->render('footer');
+        
     }
 
 }
